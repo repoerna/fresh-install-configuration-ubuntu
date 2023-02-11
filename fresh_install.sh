@@ -24,7 +24,7 @@ sudo apt install regolith-desktop regolith-compositor-picom-glx -y
 sudo apt install i3xrocks-rofication i3xrocks-microphone i3xrocks-volume i3xrocks-temp i3xrocks-cpu-usage i3xrocks-battery i3xrocks-disk-capacity -y
 
 # -- copy Xresource file to overide settings
-mv ./Xresources /home/$USER/.config/regolith2/ 
+mv ./Xresources ~/.config/regolith2/ 
 
 
 # kitty ---------------------------------------------------------------
@@ -39,7 +39,7 @@ sudo update-alternatives --set x-terminal-emulator $(which kitty)
 sudo apt-get install feh -y
 
 # -- download image
-curl -o /home/$(echo $USER)/Pictures/wllppr.jpg "https://images.unsplash.com/photo-1523248948644-586f1ab2a83e?ixlib=rb-4.0.3&dl=tyler-lastovich-VuRQP-kOYbc-unsplash.jpg&w=2400&q=80&fm=jpg&crop=entropy&cs=tinysrgb"
+curl -o ~/Pictures/wllppr.jpg "https://images.unsplash.com/photo-1523248948644-586f1ab2a83e?ixlib=rb-4.0.3&dl=tyler-lastovich-VuRQP-kOYbc-unsplash.jpg&w=2400&q=80&fm=jpg&crop=entropy&cs=tinysrgb"
 
 # -- set wallpaper
 feh --bg-fill ~/Pictures/wllppr.jpg

@@ -23,6 +23,9 @@ i3-wm.bar.workspace.urgent.background.color: #ebcb8b
 i3-wm.bar.workspace.urgent.text.color: #2f343f
 
 
+## Program
+i3-wm.program.1: /usr/bin/feh --bg-fill ~/Pictures/wllppr.jpg
+
 ## Workspace Name
 i3-wm.workspace.01.name: 1
 i3-wm.workspace.02.name: 2
