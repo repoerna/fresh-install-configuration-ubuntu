@@ -12,20 +12,28 @@ sudo tee /etc/apt/sources.list.d/regolith.list
 
 # update and upgrade -------------------------------------------------
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install curl -y
-
+#sudo apt install curl -y
+sudo apt-get install git python3-pip fonts-font-awesome fonts-nerd-font-firacode curl vim pulseaudio pavucontrol -y
 
 # regolith -----------------------------------------------------------
 # -- install
 sudo apt install regolith-desktop regolith-compositor-picom-glx -y
 
+# -- looks
+sudo apt install regolith-look-nord -y
 
-# -- i3xrocks
-sudo apt install i3xrocks-rofication i3xrocks-microphone i3xrocks-volume i3xrocks-temp i3xrocks-cpu-usage i3xrocks-battery i3xrocks-disk-capacity -y
+# -- regolith user config
+mkdir -p ~/.config/regolith2/i3/config.d
+cp ./regolith/00_program-binkey ~/.config/regolith2/i3/config.d/
+cp ./regolith/01_program-binkey-with-mod ~/.config/regolith2/i3/config.d/
+cp ./regolith/02_shortcut-binkey ~/.config/regolith2/i3/config.d/
 
 # -- copy Xresource file to overide settings
-mv ./Xresources ~/.config/regolith2/ 
+cp ./regolith/Xresources ~/.config/regolith2/ 
 
+# -- copy picom
+mkdir -p ~/.config/regolith2/picom
+cp ./picom/config ~/.config/regolith2/picom/
 
 # kitty ---------------------------------------------------------------
 # -- install
@@ -33,6 +41,14 @@ sudo apt install kitty -y
 
 # -- set kitty as default terminal
 sudo update-alternatives --set x-terminal-emulator $(which kitty) 
+
+# -- set kitty theme
+git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/kitty-themes
+
+ln -s ~/.config/kitty/kitty-themes/themes/Duotone_Dark.conf ~/.config/kitty/theme.conf
+
+cp ./kitty/kitty.conf ~/.config/kitty/
+
 
 # feh ----------------------------------------------------------------
 # -- install
@@ -43,3 +59,75 @@ curl -o ~/Pictures/wllppr.jpg "https://images.unsplash.com/photo-1523248948644-5
 
 # -- set wallpaper
 feh --bg-fill ~/Pictures/wllppr.jpg
+
+
+# bumblebee-status ------------------------------------------------------
+# -- install
+git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git ~/.config/bumblebee
+
+# -- pulsectl
+pip install pulsectl
+
+# -- netifacce
+sudo apt-get install -y python3-netifaces
+
+
+# tmux ------------------------------------------------------------------
+# -- install
+sudo apt install tmux
+
+
+
+# ZSH --------------------------------------------------------------------
+# -- install ZSH
+sudo apt install zsh -y
+
+# -- make ZSH default 
+chsh -s $(which zsh)
+
+# -- install oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# -- zsh highlight
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+sed -i "s/plugins=(/&zsh-syntax-highlighting\ /" ~/.zshrc
+
+# -- zsh autosuggestion
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+sed -i "s/plugins=(/&zsh-autosuggestions\ /" ~/.zshrc
+
+# -- fzf
+sudo apt install fzf
+sed -i "s/plugins=(/&fzf zsh-interactive-cd\ /" ~/.zshrc
+
+# -- other plugins
+pip install thefuck
+echo "export PATH=~/.local/bin:\$PATH" >> .zshrc
+sed -i "s/plugins=(/&tmux wd jsontools thefuck\ /" ~/.zshrc
+
+# -- spaceship propmt
+git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+sed -i "s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"spaceship\"/g" ~/.zshrc
+
+
+# greenclip - clipboard -------------------------------------------------------------------------
+# -- install greenclip
+wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
+mv greenclip ~/.local/bin/
+chmod +x ~/.local/bin/greenclip
+
+# -- install rofi
+sudo apt install rofi -y
+
+# -- setup rofi themes
+mkdir -p ~/.local/share/rofi/themes
+git clone https://github.com/lr-tech/rofi-themes-collection.git
+cp rofi-themes-collection/themes/nord.rasi ~/.local/share/rofi/themes/
+
+
+# flameshot -----------------------------------------------------
+## - install flameshot
+udo apt install flameshot -y
+

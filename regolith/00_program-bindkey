@@ -1,0 +1,11 @@
+set_from_resource $i3-wm.bindsym.1 i3-wm.bindsym.1 :
+set_from_resource $i3-wm.bindsym.program.1 i3-wm.bindsym.program.1 :
+bindsym $i3-wm.bindsym.1 exec --no-startup-id $i3-wm.bindsym.program.1
+
+#set_from_resource $i3-wm.bindsym.2 i3-wm.bindsym.2 :
+#set_from_resource $i3-wm.bindsym.program.2 i3-wm.bindsym.program.2 :
+#bindsym $i3-wm.bindsym.2 exec --no-startup-id $i3-wm.bindsym.program.2
+
+#set_from_resource $i3-wm.bindsym.3 i3-wm.bindsym.3 :
+#set_from_resource $i3-wm.bindsym.program.3 i3-wm.bindsym.program.3 :
+#bindsym $i3-wm.bindsym.3 exec --no-startup-id $i3-wm.bindsym.program.3

@@ -22,9 +22,46 @@ i3-wm.bar.workspace.urgent.border.color: #2f343f
 i3-wm.bar.workspace.urgent.background.color: #ebcb8b
 i3-wm.bar.workspace.urgent.text.color: #2f343f
 
+i3-wm.bar.separatorchar: |
+
+i3-wm.bar.font: Fira Code 11
+
+## Status Command
+i3-wm.bar.status_command: ~/.config/bumblebee/bumblebee-status \
+-t iceberg-powerline \
+-m network network_traffic pulsein pulseout brightness battery_upower date time \
+rofication \
+-p rofication.regolith=/usr/bin/rofication-daemon
 
 ## Program
 i3-wm.program.1: /usr/bin/feh --bg-fill ~/Pictures/wllppr.jpg
+
+## Program and Bindkey with Mod
+## greenclip
+i3-wm.bindsym.mod.1: Ctrl+v
+i3-wm.bindsym.mod.program.1: rofi -modi "clipboard:~/.local/bin/greenclip print" -show clipboard -run-command '{cmd}'
+
+## i3-wm.bindsym.mod.2: 
+## i3-wm.bindsym.mod.program.2: 
+
+## i3-wm.bindsym.mod.3:
+## i3-wm.bindsym.mod.program.3:
+
+## i3-wm.bindsym.mod.4:
+## i3-wm.bindsym.mod.program.4:
+
+## i3-wm.bindsym.mod.5:
+## i3-wm.bindsym.mod.program.5:
+
+## Program and Bindkey
+i3-wm.bindsym.1: Print 
+i3-wm.bindsym.program.1: flameshot gui
+
+## i3-wm.bindsym.2: 
+## i3-wm.bindsym.program.2:
+
+## i3-wm.bindsym.3: 
+## i3-wm.bindsym.program.3:
 
 ## Workspace Name
 i3-wm.workspace.01.name: 1
@@ -46,3 +83,6 @@ i3-wm.workspace.16.name: 16
 i3-wm.workspace.17.name: 17
 i3-wm.workspace.18.name: 18
 i3-wm.workspace.19.name: 19
+
+
+regolith.look.path: /usr/share/regolith-look/nord
