@@ -4,5 +4,5 @@ bindsym $mod+less move workspace to output left
 
 
 
-
+exec --no-startup-id /usr/bin/picom --config ~/.config/regolith2/picom/config --experimental-backends -b
 exec_always --no-startup-id ~/.local/bin/greenclip daemon
