@@ -5,4 +5,4 @@ bindsym $mod+less move workspace to output left
 
 
 
-exec_alyway --no-startup-id ~/.local/bin/greenclip daemon
+exec_always --no-startup-id ~/.local/bin/greenclip daemon
