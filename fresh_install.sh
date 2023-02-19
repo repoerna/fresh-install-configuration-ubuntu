@@ -13,7 +13,7 @@ sudo tee /etc/apt/sources.list.d/regolith.list
 # update and upgrade -------------------------------------------------
 sudo apt update -y && sudo apt upgrade -y
 #sudo apt install curl -y
-sudo apt-get install git python3-pip fonts-font-awesome fonts-nerd-font-firacode curl vim pulseaudio pavucontrol -y
+sudo apt-get install git python3-pip fonts-font-awesome fonts-firacode fonts-nerd-font-firacode curl vim pulseaudio pavucontrol -y
 
 # regolith -----------------------------------------------------------
 # -- install
@@ -24,9 +24,9 @@ sudo apt install regolith-look-nord -y
 
 # -- regolith user config
 mkdir -p ~/.config/regolith2/i3/config.d
-cp ./regolith/00_program-binkey ~/.config/regolith2/i3/config.d/
-cp ./regolith/01_program-binkey-with-mod ~/.config/regolith2/i3/config.d/
-cp ./regolith/02_shortcut-binkey ~/.config/regolith2/i3/config.d/
+cp ./regolith/00_program-bindkey ~/.config/regolith2/i3/config.d/
+cp ./regolith/01_program-bindkey-with-mod ~/.config/regolith2/i3/config.d/
+cp ./regolith/02_shortcut-bindkey ~/.config/regolith2/i3/config.d/
 
 # -- copy Xresource file to overide settings
 cp ./regolith/Xresources ~/.config/regolith2/ 
@@ -34,6 +34,7 @@ cp ./regolith/Xresources ~/.config/regolith2/
 # -- copy picom
 mkdir -p ~/.config/regolith2/picom
 cp ./picom/config ~/.config/regolith2/picom/
+
 
 # kitty ---------------------------------------------------------------
 # -- install
@@ -69,13 +70,12 @@ git clone https://github.com/tobi-wan-kenobi/bumblebee-status.git ~/.config/bumb
 pip install pulsectl
 
 # -- netifacce
-sudo apt-get install -y python3-netifaces
+sudo apt-get install python3-netifaces -y
 
 
 # tmux ------------------------------------------------------------------
 # -- install
-sudo apt install tmux
-
+sudo apt install tmux -y
 
 
 # ZSH --------------------------------------------------------------------
@@ -83,10 +83,11 @@ sudo apt install tmux
 sudo apt install zsh -y
 
 # -- make ZSH default 
-chsh -s $(which zsh)
+#chsh -s $(which zsh)
 
 # -- install oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sed 's:env zsh::g' | sed 's:chsh -s .*$::g')"
 
 # -- zsh highlight
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -112,7 +113,7 @@ ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/the
 sed -i "s/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"spaceship\"/g" ~/.zshrc
 
 
-# greenclip - clipboard -------------------------------------------------------------------------
+# greenclip - clipboard -----------------------------------------------------
 # -- install greenclip
 wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip
 mv greenclip ~/.local/bin/
@@ -123,11 +124,13 @@ sudo apt install rofi -y
 
 # -- setup rofi themes
 mkdir -p ~/.local/share/rofi/themes
-git clone https://github.com/lr-tech/rofi-themes-collection.git
-cp rofi-themes-collection/themes/nord.rasi ~/.local/share/rofi/themes/
+git clone https://github.com/lr-tech/rofi-themes-collection.git ~/rofi-themes-cpllection
+cp ~/rofi-themes-collection/themes/nord.rasi ~/.local/share/rofi/themes/
 
 
 # flameshot -----------------------------------------------------
-## - install flameshot
-udo apt install flameshot -y
+## -- install flameshot
+sudo apt install flameshot -y
 
+# cleanup
+sudo apt autoremove -y
