@@ -29,9 +29,14 @@ i3-wm.bar.font: Fira Code 11
 ## Status Command
 i3-wm.bar.status_command: ~/.config/bumblebee/bumblebee-status \
 -t iceberg-powerline \
--m network network_traffic pulsein pulseout brightness battery_upower date time \
+-m network network_traffic disk memory cpu pulsein pulseout battery_upower weather date time \
 rofication \
--p rofication.regolith=/usr/bin/rofication-daemon
+-p rofication.regolith=/usr/bin/rofication-daemon \
+-p date.format="%a, %b %d %Y" \
+-p time.format="%H:%M" \
+-p disk.format="{percent:5.02f}%" \
+-p memory.format="{percent:5.02f}%" \
+-p weather.showcity=false 
 
 ## Program
 i3-wm.program.1: /usr/bin/feh --bg-fill ~/Pictures/wllppr.jpg

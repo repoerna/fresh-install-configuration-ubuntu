@@ -1,7 +1,8 @@
-bindsym $mod+greater move workspace to output right
-bindsym $mod+less move workspace to output left
+# bindsym $mod+greater move workspace to output right
+# bindsym $mod+less move workspace to output left
 
-
+bindsym $mod+Ctrl+greater move workspace to output right
+bindsym $mod+Ctrl+less move workspace to output left
 
 
 exec --no-startup-id /usr/bin/picom --config ~/.config/regolith2/picom/config --experimental-backends -b

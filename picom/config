@@ -126,7 +126,8 @@ opacity-rule = [
   "80:class_g = 'URxvt'",
   "70:class_g = 'kitty' && focused",
   "90:class_g = 'kitty' && !focused",
-  "95:class_g = 'Code'"
+  "90:class_g = 'Code'"
+  "90:class_g = 'Logseq'"
 ];
 
 #################################
@@ -219,6 +220,7 @@ wintypes:
         fade = true;
         # shadow: Give those windows shadow
         shadow = false;
+    
         # opacity: Default opacity for the type of windows.
         opacity = 0.85;
         # focus: Whether to always consider windows of this type focused.

@@ -124,7 +124,7 @@ sudo apt install rofi -y
 
 # -- setup rofi themes
 mkdir -p ~/.local/share/rofi/themes
-git clone https://github.com/lr-tech/rofi-themes-collection.git ~/rofi-themes-cpllection
+git clone https://github.com/lr-tech/rofi-themes-collection.git ~/rofi-themes-collection
 cp ~/rofi-themes-collection/themes/nord.rasi ~/.local/share/rofi/themes/
 
 
